@@ -1,0 +1,3166 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+
+</HEAD>
+<BODY onload=load()>	<bgsound src="powerminersbackgroundmusic.wav" loop="infinite"  volume=0 balance=0>
+<script language="Javascript" type="text/javascript">
+//Guess what? I don't comment that much, so too bad for you!! HAHA!!
+clickedon = -1
+stepping = "false"
+dontmoveatallno = "false"
+iof = "false"
+counter = 0
+numberofweapons = 1
+
+weap = 1
+wbu = 1
+cw = "false"
+stopitnow = "false"
+turn = "pm"
+stop = "false"
+fgo = "false"
+defender = 0
+cf = "false"
+attacker = ""
+rml = 5
+pmli = 5
+limit = 196
+cc = "false"
+wc = 0
+dmiv = "false"
+noc = 3
+patnum = 0
+pattwonum = 0
+
+
+whosclickedon = "nobody"
+pmn = new Array
+pms = new Array
+pmt = new Array
+pmm = new Array
+pma = new Array		
+pml = new Array
+pmp = new Array
+pmw = new Array
+pmwtwo = new Array
+pmwthree = new Array
+pmwd = new Array
+pmwtwod = new Array
+patterntwo = new Array(1,3,5,4,6,2,3,4,7,3,2,1,4,6,3,5,4,5,4,8,7,3,1,2,4,6,7,2,4,6,8,7,3,2,1,4,5,6,7,2,8,6,4,7,5,4,5,7,1,7,3,1,5)
+pattern = new Array(5,4,9,7,9,3,1,6,7,9,4,7,4,5,6,7,8,9,3,4,1,2,8,6,4,3,4,6,4,7,8,4,6,4,6,4,5,6,4,2,3,6,7,5,4,6,7,9,5,4,4,7,8)
+timeslefttousezap = new Array(0,0,0,0,0,0,0,0,0,0)
+pmwthreed = new Array
+alreadymoved = new Array
+weapon = new Array
+weaponname = new Array
+pmw[0] = "pickaxe"
+pmw[1] = "pickaxe"
+pmw[2] = "pickaxe"
+pmw[3] = "pickaxe"
+pmw[4] = "rocky arm"
+pmw[5] = "rocky arm"
+pmw[6] = "rocky arm"
+pmw[7] = "rocky arm"
+pmw[8] = "rocky arm"
+pmw[9] = "pickaxe"
+pmw[10] = "pickaxe"
+pmwtwo[0] = "buzzsaw"
+pmwtwo[1] = "chainsaw"
+pmwtwo[2] = "buzzsaw"
+pmwtwo[3] = "secret weapon"
+pmwtwo[4] = ""
+pmwtwo[5] = ""
+pmwtwo[6] = ""
+pmwtwo[7] = ""
+pmwtwo[8] = ""
+pmwtwo[9] = "chainsaw"
+pmwtwo[10] = "buzzsaw"
+pmwthree[0] = "dynamite"
+pmwthree[1] = "dynamite"
+pmwthree[2] = "dynamite"
+pmwthree[3] = ""
+pmwthree[4] = ""
+pmwthree[5] = ""
+pmwthree[6] = ""
+pmwthree[7] = ""
+pmwthree[8] = ""
+pmwthree[9] = "dynamite"
+pmwthree[10] = "dynamite"
+pmwd[0] = 1
+pmwd[1] = 1
+pmwd[2] = 1
+pmwd[3] = 1
+pmwd[4] = 4
+pmwd[5] = 4
+pmwd[6] = 4
+pmwd[7] = 4
+pmwd[8] = 5
+pmwd[9] = 1
+pmwd[10] = 1
+pmwtwod[0] = 3
+pmwtwod[1] = 3
+pmwtwod[2] = 3
+pmwtwod[3] = 5
+pmwtwod[4] = 0
+pmwtwod[5] = 0
+pmwtwod[6] = 0
+pmwtwod[7] = 0
+pmwtwod[8] = 0
+pmwtwod[9] = 3	
+pmwtwod[10] = 3
+pmwthreed[0] = 4	
+pmwthreed[1] = 4 
+pmwthreed[2] = 4 
+pmwthreed[3] = 0 
+pmwthreed[4] = 0 
+pmwthreed[5] = 0 
+pmwthreed[6] = 0 
+pmwthreed[7] = 0 
+pmwthreed[8] = 0 
+pmwthreed[9] = 4
+pmwthreed[10] = 4	  
+
+
+
+
+weaponname[1] = "pickaxe"
+weaponname[2] = ""
+weaponname[3] = ""
+weapon[1] = 1
+weapon[2] = 0
+weapon[3] = 0
+alreadymoved[0] = "false"
+alreadymoved[1] = "false"
+alreadymoved[2] = "false"
+alreadymoved[3] = "false"
+alreadymoved[4] = "false"
+alreadymoved[5] = "false"
+alreadymoved[6] = "false"
+alreadymoved[7] = "false"
+alreadymoved[8] = "false"
+alreadymoved[9] = "false"
+alreadymoved[10] = "false"
+
+
+pmn[0] = "REX"
+pmn[1] = "DUKE"
+pmn[2] = "DOC"
+pmn[3] = "BRAINS"
+pmn[4] = "GLACIATOR"
+pmn[5] = "MELTROX"
+pmn[6] = "FIROX"
+pmn[7] = "SULFURIX"
+pmn[8] = "BOULDERAX"
+pmn[9] = "BOB"
+pmn[10] = "JED"
+pms[0] = 7
+pms[1] = 9
+pms[2] = 8
+pms[3] = 6
+pms[4] = 12
+pms[5] = 13
+pms[6] = 11
+pms[7] = 13
+pms[8] = 16
+pms[9] = 5
+pmt[0] = 6
+pmt[1] = 9
+pmt[2] = 8
+pmt[3] = 5
+pmt[4] = 12
+pmt[5] = 13
+pmt[6] = 11
+pmt[7] = 12
+pmt[8] = 16
+pmt[9] = 5
+pmm[0] = 6
+pmm[1] = 5
+pmm[2] = 6
+pmm[3] = 12
+pmm[4] = 5
+pmm[5] = 5
+pmm[6] = 4
+pmm[7] = 4
+pmm[8] = 1
+pmm[9] = 5
+pmm[10] = 0
+pma[0] = 6
+pma[1] = 4
+pma[2] = 5
+pma[3] = 9
+pma[4] = 5
+pma[5] = 4
+pma[6] = 6
+pma[7] = 5
+pma[8] = 1
+pma[9] = 5
+pma[10] = 7
+pml[0] = 35
+pml[1] = 35
+pml[2] = 35
+pml[3] = 35
+pml[4] = 40
+pml[5] = 40
+pml[6] = 40
+pml[7] = 40
+pml[8] = 40
+pml[9] = 35
+pml[10] = 35
+pmp[0] = "rexcloseup.gif"
+pmp[1] = "dukecloseup.gif"
+pmp[2] = "doccloseupy.gif"
+pmp[3] = "brainscloseup.gif"
+pmp[4] = "glaciatorcloseup.gif"
+pmp[5] = "meltroxcloseup.gif"
+pmp[6] = "firoxcloseup.gif"
+pmp[7] = "sulfurixcloseup.gif"
+pmp[8] = "boulderaxcloseup.gif"
+pmp[9] = "minercloseup.gif"
+pmp[10] = "jed.gif"
+
+
+
+function load() {
+
+document.all.firox.style.left = 700
+document.all.sulfurix.style.left = 700
+
+document.all.glaciatior.style.pixelLeft = 695
+document.all.glaciatior.style.pixelTop = 25
+document.all.meltrox.style.pixelLeft = 695
+document.all.meltrox.style.pixelTop = 60
+document.all.glaciatorc.style.pixelLeft = 681
+document.all.glaciatorc.style.pixelTop = 37
+document.all.meltroxc.style.pixelLeft = 681
+
+document.all.meltroxc.style.pixelTop = 77
+document.all.firox.style.pixelLeft = 695
+document.all.firox.style.pixelTop = 100
+document.all.sulfurix.style.pixelLeft = 695
+document.all.sulfurix.style.pixelTop = 140
+document.all.boulderax.style.pixelLeft = 695
+document.all.boulderax.style.pixelTop = 180
+document.all.firoxc.style.pixelLeft = 681
+document.all.firoxc.style.pixelTop = 117
+document.all.sulfurixc.style.pixelLeft =  681
+document.all.sulfurixc.style.pixelTop = 157
+document.all.boulderaxc.style.pixelLeft = 681
+document.all.boulderaxc.style.pixelTop = 197
+document.all.rex.style.pixelLeft = 15
+document.all.rex.style.pixelTop = 15
+document.all.duke.style.pixelLeft = 15
+document.all.duke.style.pixelTop = 55
+document.all.doc.style.pixelLeft = 15
+document.all.doc.style.pixelTop = 95
+document.all.brains.style.pixelLeft = 15
+document.all.brains.style.pixelTop = 135
+document.all.miner.style.pixelLeft = 15
+document.all.miner.style.pixelTop = 175
+document.all.jed.style.pixelLeft = 15
+document.all.jed.style.pixelTop = 215
+document.all.jedc.style.pixelLeft = 40
+document.all.jedc.style.pixelTop = 227
+
+document.all.rexc.style.pixelLeft = 40
+document.all.rexc.style.pixelTop = 27
+document.all.dukec.style.pixelLeft = 40
+document.all.dukec.style.pixelTop = 67
+document.all.docc.style.pixelLeft = 40
+document.all.docc.style.pixelTop = 107
+document.all.brainsc.style.pixelLeft = 40
+document.all.brainsc.style.pixelTop = 147
+document.all.minerc.style.pixelLeft = 40
+document.all.minerc.style.pixelTop = 187
+crystala.style.pixelLeft = 300
+crystalb.style.pixelLeft = 500
+crystalc.style.pixelLeft = 600
+crystala.style.pixelTop = 200
+crystalb.style.pixelTop = 400
+crystalc.style.pixelTop = 100
+
+
+
+
+
+
+
+
+
+
+
+
+}
+function turnVisible() {
+alert("attack!!!!1")
+glaciatorc.style.visibility = "visible"
+}
+function moveHandler(evt) {
+if(document.all) {
+whichTurn(window.event.clientX,window.event.clientY)
+}
+else {
+whichTurn(evt.pageX,evt.pageY)
+}
+}
+function whichTurn(xPos, yPos) {
+if(turn == "pm") {
+movePowerMiner(xPos,yPos)
+}
+else {
+moveRockMonster(xPos,yPos)
+}
+}
+function changeProfile(number) {
+
+
+clickedon = number
+if(clickedon >=0) {
+if(clickedon <=3) {
+whosclickedon = "pm"
+}
+else {
+whosclickedon = "rm"
+}
+}
+else {
+whosclickedon = "rm"
+}
+if(clickedon  == 9) {
+whosclickedon = "pm"
+}
+if(clickedon  == 10) {
+whosclickedon = "pm"
+}
+
+proname.value =	pmn[number]
+mind.value = pmm[number]
+agil.value = pma[number]
+w1.src = pmw[number] + ".gif"
+w2.src = pmwtwo[number] + ".gif"
+w3.src = pmwthree[number] + ".gif"
+w1.alt = pmw[number]
+w2.alt = pmwtwo[number] 
+w3.alt = pmwthree[number] 
+lives.value = pml[number]
+profile.src = pmp[number]
+
+}
+function movePowerMiner(xPos, yPos,cf) {
+limit = 196
+addon = (pma[clickedon] - 5)*6
+limit += addon
+if(whosclickedon == "pm") {
+if(fgo == "true") {
+alert (attacker + " is fighting " + pmn[defender] + ". Please choose a weapon")
+
+}
+else {
+stop = "false"
+if(alreadymoved[clickedon] == "true") {
+alert("He's already moved this turn")
+}
+else {
+if(pmn[clickedon] == "REX") {
+leftPos = rex.style.pixelLeft
+topPos = rex.style.pixelTop
+a =	 leftPos - xPos
+
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+
+
+
+
+
+
+
+}
+if(pmn[clickedon] == "DUKE") {
+leftPos = duke.style.pixelLeft  
+topPos = duke.style.pixelTop 
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+}
+if(pmn[clickedon] == "DOC") {
+leftPos = doc.style.pixelLeft 
+topPos = doc.style.pixelTop
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+}
+if(pmn[clickedon] == "BRAINS") {
+leftPos = brains.style.pixelLeft 
+topPos = brains.style.pixelTop 
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e) 
+
+}
+if(pmn[clickedon] == "BOB") {
+leftPos = miner.style.pixelLeft 
+topPos = miner.style.pixelTop
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+}
+if(pmn[clickedon] == "JED") {
+leftPos = jed.style.pixelLeft
+topPos = jed.style.pixelTop
+a =	 leftPos - xPos
+
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+
+
+
+
+
+
+
+}
+
+if (leftPos >= xPos) {
+ldist = a
+}
+else {
+ldist = xPos - leftPos
+}
+if(topPos >= yPos) {
+tdist = b
+}
+else {
+tdist = yPos - topPos
+}
+de = -3234
+pbm = clickedon
+movePM(a,b,ldist,tdist,distance,de)
+}
+
+
+
+}
+}
+else {
+alert("Please click on a power miner.")
+}
+
+
+}
+function movePM(a,b, ldist,tdist, distance, de) {
+
+if(pbm == 0) {
+d = distance
+if(d < limit) {
+alreadymoved[0] = "true"
+if(cf == "false") {
+ }
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+rex.style.pixelLeft += 1
+rexc.style.pixelLeft += 1
+
+rex.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+rex.style.pixelLeft	-= 1
+rexc.style.pixelLeft	-= 1
+rex.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(pbm == 10) {
+d = distance
+if(d < limit) {
+alreadymoved[10] = "true"
+if(cf == "false") {
+ }
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+jed.style.pixelLeft += 1
+jedc.style.pixelLeft += 1
+
+jed.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+jed.style.pixelLeft	-= 1
+jedc.style.pixelLeft	-= 1
+jed.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+
+if(pbm == 1) {
+d = distance
+if(d < limit) {
+alreadymoved[1] = "true"
+
+if(cf == "false") {
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+duke.style.pixelLeft += 1
+dukec.style.pixelLeft += 1
+
+duke.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+duke.style.pixelLeft	-= 1
+dukec.style.pixelLeft	-= 1
+duke.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(pbm == 2) {
+d = distance
+if(d < limit) {
+alreadymoved[2] = "true"
+
+if(cf == "false") {
+
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+doc.style.pixelLeft += 1
+docc.style.pixelLeft += 1
+
+doc.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+doc.style.pixelLeft	-= 1
+docc.style.pixelLeft	-= 1
+doc.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+cf = "false"
+}
+cf = "false"
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(pbm == 3) {
+d = distance
+if(d < limit) {
+alreadymoved[3] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+brains.style.pixelLeft += 1
+brainsc.style.pixelLeft += 1
+
+brains.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+brains.style.pixelLeft	-= 1
+brains.style.pixelLeft	-= 1
+brains.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(pbm == 9) {
+d = distance
+if(d < limit) {
+alreadymoved[9] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+miner.style.pixelLeft += 1
+minerc.style.pixelLeft += 1
+
+miner.src = "PowerMinerSideView.gif"
+
+
+
+}
+else {
+if(a > 0) {
+miner.style.pixelLeft	-= 1
+minerc.style.pixelLeft	-= 1
+miner.src = "PowerMinerSideViewLeft.gif"
+}
+else {
+movePMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+movePMU(b,t,d,de)
+}
+}
+else {
+setTimeout("movePM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+
+}
+}
+
+}
+function movePMU(b,t,d,de) {
+if(pbm == 0) {
+
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+rex.style.pixelTop +=1
+rexc.style.pixelTop +=1
+
+rex.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+rex.style.pixelTop -=1
+rexc.style.pixelTop -=1
+rex.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+
+if(rex.style.pixelLeft == duke.style.pixelLeft) {
+if(rex.style.pixelTop == duke.style.pixelTop) {
+
+rex.style.pixelLeft -= 9
+}
+}
+if(rex.style.pixelLeft == doc.style.pixelLeft) {
+if(rex.style.pixelTop == doc.style.pixelTop) {
+
+rex.style.pixelLeft -= 9
+}
+}
+if(rex.style.pixelLeft == brains.style.pixelLeft) {
+if(rex.style.pixelTop == brains.style.pixelTop) {
+
+rex.style.pixelLeft -= 9
+}
+}
+if(rex.style.pixelLeft == miner.style.pixelLeft) {
+if(rex.style.pixelTop == miner.style.pixelTop) {
+
+rex.style.pixelLeft -= 9
+}
+}
+if(rex.style.pixelLeft == jed.style.pixelLeft) {
+if(rex.style.pixelTop == jed.style.pixelTop) {
+
+rex.style.pixelLeft -= 9
+}
+}
+rex.src = "PowerMinerSideView.gif"
+
+
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		
+		t = counter
+		
+
+
+
+	}
+	if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "true") {
+
+
+}
+else {
+		 stopitnow = "false"
+if(iof == "true") {
+}
+else {
+iof = "false"
+
+setTimeout("movePMU(b,t,d)",15)
+
+					}
+				
+					
+}
+
+
+}
+}
+}
+if(pbm == 10) {
+
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+jed.style.pixelTop +=1
+jedc.style.pixelTop +=1
+
+jed.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+jed.style.pixelTop -=1
+jedc.style.pixelTop -=1
+jed.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+
+if(jed.style.pixelLeft == duke.style.pixelLeft) {
+if(jed.style.pixelTop == duke.style.pixelTop) {
+
+jed.style.pixelLeft -= 9
+}
+}
+if(jed.style.pixelLeft == doc.style.pixelLeft) {
+if(jed.style.pixelTop == doc.style.pixelTop) {
+
+jed.style.pixelLeft -= 9
+}
+}
+if(jed.style.pixelLeft == brains.style.pixelLeft) {
+if(jed.style.pixelTop == brains.style.pixelTop) {
+
+jed.style.pixelLeft -= 9
+}
+}
+if(jed.style.pixelLeft == miner.style.pixelLeft) {
+if(jed.style.pixelTop == miner.style.pixelTop) {
+
+jed.style.pixelLeft -= 9
+}
+}
+if(jed.style.pixelLeft == rex.style.pixelLeft) {
+if(jed.style.pixelTop == rex.style.pixelTop) {
+
+jed.style.pixelLeft -= 9
+}
+}
+jed.src = "PowerMinerSideView.gif"
+
+
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		
+		t = counter
+		
+
+
+
+	}
+	if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "true") {
+
+
+}
+else {
+		 stopitnow = "false"
+if(iof == "true") {
+}
+else {
+iof = "false"
+
+setTimeout("movePMU(b,t,d)",15)
+
+					}
+				
+					
+}
+
+
+}
+}
+}
+
+if(pbm == 1) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+duke.style.pixelTop +=1
+dukec.style.pixelTop +=1
+duke.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+duke.style.pixelTop -=1
+dukec.style.pixelTop -=1
+duke.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+
+if(duke.style.pixelLeft == rex.style.pixelLeft) {
+if(duke.style.pixelTop == rex.style.pixelTop) {
+
+duke.style.pixelLeft -= 9
+}
+}
+if(duke.style.pixelLeft == doc.style.pixelLeft) {
+if(duke.style.pixelTop == doc.style.pixelTop) {
+
+duke.style.pixelLeft -= 9
+}
+}
+if(duke.style.pixelLeft == brains.style.pixelLeft) {
+if(duke.style.pixelTop == brains.style.pixelTop) {
+
+duke.style.pixelLeft -= 9
+}
+}
+if(duke.style.pixelLeft == miner.style.pixelLeft) {
+if(duke.style.pixelTop == miner.style.pixelTop) {
+
+duke.style.pixelLeft -= 9
+}
+}
+if(duke.style.pixelLeft == jed.style.pixelLeft) {
+if(duke.style.pixelTop == jed.style.pixelTop) {
+
+duke.style.pixelLeft -= 9
+}
+}
+duke.src = "PowerMinerSideView.gif"
+
+	  if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("movePMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(pbm == 2) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+doc.style.pixelTop +=1
+docc.style.pixelTop +=1
+doc.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+doc.style.pixelTop -=1
+docc.style.pixelTop -=1
+doc.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+
+if(doc.style.pixelLeft == duke.style.pixelLeft) {
+if(doc.style.pixelTop == duke.style.pixelTop) {
+
+doc.style.pixelLeft -= 9
+}
+}
+if(doc.style.pixelLeft == rex.style.pixelLeft) {
+if(doc.style.pixelTop == rex.style.pixelTop) {
+
+doc.style.pixelLeft -= 9
+}
+}
+if(doc.style.pixelLeft == brains.style.pixelLeft) {
+if(doc.style.pixelTop == brains.style.pixelTop) {
+
+doc.style.pixelLeft -= 9
+}
+}
+if(doc.style.pixelLeft == miner.style.pixelLeft) {
+if(doc.style.pixelTop == miner.style.pixelTop) {
+
+doc.style.pixelLeft -= 9
+}
+}
+if(doc.style.pixelLeft == jed.style.pixelLeft) {
+if(doc.style.pixelTop == jed.style.pixelTop) {
+
+doc.style.pixelLeft -= 9
+}
+}
+doc.src = "PowerMinerSideView.gif"
+
+	   if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("movePMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(pbm == 3) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+brains.style.pixelTop +=1
+brainsc.style.pixelTop +=1
+brains.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+brains.style.pixelTop -=1
+brainsc.style.pixelTop -=1
+brains.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+if(brains.style.pixelLeft == duke.style.pixelLeft) {
+if(brains.style.pixelTop == duke.style.pixelTop) {
+
+brains.style.pixelLeft -= 9
+}
+}
+if(brains.style.pixelLeft == doc.style.pixelLeft) {
+if(brains.style.pixelTop == doc.style.pixelTop) {
+
+brains.style.pixelLeft -= 9
+}
+}
+if(brains.style.pixelLeft == rex.style.pixelLeft) {
+if(brains.style.pixelTop == rex.style.pixelTop) {
+
+brains.style.pixelLeft -= 9
+}
+}
+if(brains.style.pixelLeft == miner.style.pixelLeft) {
+if(brains.style.pixelTop == miner.style.pixelTop) {
+
+brains.style.pixelLeft -= 9
+}
+}
+if(brains.style.pixelLeft == jed.style.pixelLeft) {
+if(brains.style.pixelTop == jed.style.pixelTop) {
+
+brains.style.pixelLeft -= 9
+}
+}
+brains.src = "PowerMinerSideView.gif"
+
+	   if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("movePMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(pbm == 9) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+miner.style.pixelTop +=1
+minerc.style.pixelTop +=1
+miner.src = "PowerMinerFrontView.gif"
+
+}
+else if(b > 0) {
+miner.style.pixelTop -=1
+minerc.style.pixelTop -=1
+miner.src = "PowerMinerBackView.gif"
+}
+ 
+if(counter >= t) {
+
+
+if(miner.style.pixelLeft == duke.style.pixelLeft) {
+if(miner.style.pixelTop == duke.style.pixelTop) {
+
+miner.style.pixelLeft -= 9
+}
+}
+if(miner.style.pixelLeft == doc.style.pixelLeft) {
+if(miner.style.pixelTop == doc.style.pixelTop) {
+
+miner.style.pixelLeft -= 9
+}
+}
+if(miner.style.pixelLeft == rex.style.pixelLeft) {
+if(miner.style.pixelTop == rex.style.pixelTop) {
+
+miner.style.pixelLeft -= 9
+}
+}
+if(miner.style.pixelLeft == brains.style.pixelLeft) {
+if(miner.style.pixelTop == brains.style.pixelTop) {
+
+miner.style.pixelLeft -= 9
+}
+}
+if(miner.style.pixelLeft == jed.style.pixelLeft) {
+if(miner.style.pixelTop == jed.style.pixelTop) {
+
+miner.style.pixelLeft -= 9
+}
+}
+miner.src = "PowerMinerSideView.gif"
+
+		 if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("movePMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+
+}
+   function moveRockMonster(xPos, yPos,cf) {
+if(whosclickedon == "rm") {
+if(fgo == "true") {
+alert (attacker + " is fighting " + pmn[defender] + ". Please choose a weapon")
+
+}
+else {
+stop = "false"
+if(alreadymoved[clickedon] == "true") {
+alert("He's already moved this turn.")
+}
+else {
+if(pmn[clickedon] == "GLACIATOR") {
+leftPos = glaciatior.style.pixelLeft
+topPos = glaciatior.style.pixelTop
+a =	 leftPos - xPos
+
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+
+
+
+
+
+
+
+
+}
+if(pmn[clickedon] == "MELTROX") {
+leftPos = meltrox.style.pixelLeft  
+topPos = meltrox.style.pixelTop 
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+}
+if(pmn[clickedon] == "FIROX") {
+leftPos = firox.style.pixelLeft 
+topPos = firox.style.pixelTop
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)	 
+
+}
+if(pmn[clickedon] == "SULFURIX") {
+leftPos = sulfurix.style.pixelLeft 
+topPos = sulfurix.style.pixelTop 
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e) 
+
+}
+if(pmn[clickedon] == "BOULDERAX") {
+leftPos = boulderax.style.pixelLeft 
+topPos = boulderax.style.pixelTop
+a =	 leftPos - xPos
+
+b = topPos-yPos
+
+c = Math.pow(a,2)
+d = Math.pow(b,2)
+e = c + d
+
+distance = Math.sqrt(e)
+
+}
+if (leftPos >= xPos) {
+ldist = a
+}
+else {
+ldist = xPos - leftPos
+}
+if(topPos >= yPos) {
+tdist = b
+}
+else {
+tdist = yPos - topPos
+}
+de = -3234
+rbm = clickedon
+moveRM(a,b,ldist,tdist,distance,de)
+}
+
+
+}
+}
+else {
+alert("Please click on a rock monster.")
+}
+
+
+}
+function moveRM(a,b, ldist,tdist, distance, de) {
+
+if(rbm == 4) {
+d = distance
+if(d < limit) {
+alreadymoved[4] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+glaciatior.style.pixelLeft += 1
+glaciatorc.style.pixelLeft += 1
+
+glaciatior.src = "glaciatiorside2.gif"
+
+
+
+}
+else {
+if(a > 0) {
+glaciatior.style.pixelLeft	-= 1
+glaciatorc.style.pixelLeft	-= 1
+glaciatior.src = "glaciatiorside.gif"
+}
+else {
+moveRMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+moveRMU(b,t,d,de)
+}
+}
+else {
+setTimeout("moveRM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc= "false"
+}
+}
+if(rbm == 5) {
+d = distance
+if(d < limit) {   
+alreadymoved[5] = "true"
+
+if(cf == "false") {
+
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+meltrox.style.pixelLeft += 1
+meltroxc.style.pixelLeft += 1
+
+meltrox.src = "meltroxside2.gif"
+
+
+
+}
+else {
+if(a > 0) {
+meltrox.style.pixelLeft	-= 1
+meltroxc.style.pixelLeft	-= 1
+meltrox.src = "meltroxside.gif"
+}
+else {
+moveRMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+moveRMU(b,t,d,de)
+}
+}
+else {
+setTimeout("moveRM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(rbm == 6) {
+d = distance
+if(d < limit) {
+alreadymoved[6] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+firox.style.pixelLeft += 1
+firoxc.style.pixelLeft += 1
+
+firox.src = "firoxside2.gif"
+
+
+
+}
+else {
+if(a > 0) {
+firox.style.pixelLeft	-= 1
+firoxc.style.pixelLeft	-= 1
+firox.src = "firoxside.gif"
+}
+else {
+moveRMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+moveRMU(b,t,d,de)
+}
+}
+else {
+setTimeout("moveRM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(rbm == 7) {
+d = distance
+if(d < limit) {
+alreadymoved[7] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+sulfurix.style.pixelLeft += 1
+sulfurixc.style.pixelLeft += 1
+
+sulfurix.src = "sulfurixside2.gif"
+
+
+
+}
+else {
+if(a > 0) {
+sulfurix.style.pixelLeft	-= 1
+sulfurixc.style.pixelLeft	-= 1
+sulfurix.src = "sulfurixside.gif"
+}
+else {
+moveRMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+moveRMU(b,t,d,de)
+}
+}
+else {
+setTimeout("moveRM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"
+cc = "false"
+}
+}
+if(rbm == 8) {
+d = distance
+if(d < limit) {
+alreadymoved[8] = "true"
+
+if(cf == "false") {
+
+ 
+
+}
+else {
+cf = "false"
+
+fgo = "true"
+
+}
+a = a
+b = b
+l = ldist
+t = tdist
+counter += 1
+if(a < 0) {
+boulderax.style.pixelLeft += 1
+boulderaxc.style.pixelLeft += 1
+
+boulderax.src = "boulderaxside2.gif"
+
+
+
+}
+else {
+if(a > 0) {
+boulderax.style.pixelLeft	-= 1
+boulderaxc.style.pixelLeft	-= 1
+boulderax.src = "boulderaxside.gif"
+}
+else {
+moveRMU(b,t,d,de)
+
+}
+
+}
+
+if(counter >= l) {
+
+if(stop == "true") {
+alert (stop)
+counter = 0
+}
+else {
+counter = 0
+
+moveRMU(b,t,d,de)
+}
+}
+else {
+setTimeout("moveRM(a,b,l,t,d,de)",15)
+
+}
+}
+else {
+cf = "false"  
+cc = "false"
+}
+}
+
+}
+function moveRMU(b,t,d,de) {
+if(rbm == 4) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+glaciatior.style.pixelTop +=1
+glaciatorc.style.pixelTop +=1
+
+glaciatior.src = "glaciatiorfront.gif"
+
+}
+else if(b > 0) {
+glaciatior.style.pixelTop -=1
+glaciatorc.style.pixelTop -=1
+glaciatior.src = "glaciatiorback.gif"
+}
+ 
+if(counter >= t) {
+
+if(glaciatior.style.pixelLeft == meltrox.style.pixelLeft) {
+if(glaciatior.style.pixelTop == meltrox.style.pixelTop) {
+glaciatior.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == firox.style.pixelLeft) {
+if(glaciatior.style.pixelTop == firox.style.pixelTop) {
+glaciatior.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == sulfurix.style.pixelLeft) {
+if(glaciatior.style.pixelTop == sulfurix.style.pixelTop) {
+glaciatior.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == boulderax.style.pixelLeft) {
+if(glaciatior.style.pixelTop == boulderax.style.pixelTop) {
+glaciatior.style.pixelLeft += 9
+}
+}
+glaciatior.src = "glaciatiorside.gif"
+
+	   if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("moveRMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(rbm == 5) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+meltrox.style.pixelTop +=1
+meltroxc.style.pixelTop +=1
+meltrox.src = "meltroxfront.gif"
+
+}
+else if(b > 0) {
+meltrox.style.pixelTop -=1
+meltroxc.style.pixelTop -=1
+meltrox.src = "meltroxback.gif"
+}
+ 
+if(counter >= t) {
+
+if(meltrox.style.pixelLeft == glaciatior.style.pixelLeft) {
+if(meltrox.style.pixelTop == glaciatior.style.pixelTop) {
+meltrox.style.pixelLeft += 9
+}
+}
+if(meltrox.style.pixelLeft == firox.style.pixelLeft) {
+if(meltrox.style.pixelTop == firox.style.pixelTop) {
+meltrox.style.pixelLeft += 9
+}
+}
+if(meltrox.style.pixelLeft == sulfurix.style.pixelLeft) {
+if(meltrox.style.pixelTop == sulfurix.style.pixelTop) {
+meltrox.style.pixelLeft += 9
+}
+}
+if(meltrox.style.pixelLeft == boulderax.style.pixelLeft) {
+if(meltrox.style.pixelTop == boulderax.style.pixelTop) {
+meltrox.style.pixelLeft += 9
+}
+}
+meltrox.src = "meltroxside.gif"
+
+		  if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("moveRMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(rbm == 6) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+firox.style.pixelTop +=1
+firoxc.style.pixelTop +=1
+firox.src = "firoxfront.gif"
+
+}
+else if(b > 0) {
+firox.style.pixelTop -=1
+firoxc.style.pixelTop -=1
+firox.src = "firoxback.gif"
+}
+ 
+if(counter >= t) {
+ //Makes sure that when the move is complete, the person moving is not on top of anyone. If he is, move him over.
+if(firox.style.pixelLeft == meltrox.style.pixelLeft) {
+if(firox.style.pixelTop == meltrox.style.pixelTop) {
+firox.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == firox.style.pixelLeft) {
+if(glaciatior.style.pixelTop == firox.style.pixelTop) {
+firox.style.pixelLeft += 9
+}
+}
+if(firox.style.pixelLeft == sulfurix.style.pixelLeft) {
+if(firox.style.pixelTop == sulfurix.style.pixelTop) {
+firox.style.pixelLeft += 9
+}
+}
+if(firox.style.pixelLeft == boulderax.style.pixelLeft) {
+if(firox.style.pixelTop == boulderax.style.pixelTop) {
+firox.style.pixelLeft += 9
+}
+}
+firox.src = "firoxside.gif"
+
+		 if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("moveRMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(rbm == 7) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+sulfurix.style.pixelTop +=1
+sulfurixc.style.pixelTop +=1
+sulfurix.src = "sulfurixfront.gif"
+
+}
+else if(b > 0) {
+sulfurix.style.pixelTop -=1
+sulfurixc.style.pixelTop -=1
+sulfurix.src = "sulfurixback.gif"
+}
+ 
+if(counter >= t) {
+if(sulfurix.style.pixelLeft == meltrox.style.pixelLeft) {
+if(sulfurix.style.pixelTop == meltrox.style.pixelTop) {
+sulfurix.style.pixelLeft += 9
+}
+}
+if(sulfurix.style.pixelLeft == firox.style.pixelLeft) {
+if(sulfurix.style.pixelTop == firox.style.pixelTop) {
+sulfurix.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == sulfurix.style.pixelLeft) {
+if(glaciatior.style.pixelTop == sulfurix.style.pixelTop) {
+sulfurix.style.pixelLeft += 9
+}
+}
+if(sulfurix.style.pixelLeft == boulderax.style.pixelLeft) {
+if(sulfurix.style.pixelTop == boulderax.style.pixelTop) {
+sulfurix.style.pixelLeft += 9
+}
+}
+sulfurix.src = "sulfurixside.gif"
+
+		  if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("moveRMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+if(rbm == 8) {
+stopitnow= "false"
+d=d
+
+
+if(d<limit) {
+
+b=b
+t=t
+counter += 1
+if(b < 0) {
+boulderax.style.pixelTop +=1
+boulderaxc.style.pixelTop +=1
+boulderax.src = "boulderaxfront.gif"
+
+}
+else if(b > 0) {
+boulderax.style.pixelTop -=1
+boulderaxc.style.pixelTop -=1
+boulderax.src = "boulderaxback.gif"
+}
+ 
+if(counter >= t) {
+
+if(boulderax.style.pixelLeft == meltrox.style.pixelLeft) {
+if(boulderax.style.pixelTop == meltrox.style.pixelTop) {
+boulderax.style.pixelLeft += 9
+}
+}
+if(boulderax.style.pixelLeft == firox.style.pixelLeft) {
+if(boulderax.style.pixelTop == firox.style.pixelTop) {
+boulderax.style.pixelLeft += 9
+}
+}
+if(glaciatior.style.pixelLeft == boulderax.style.pixelLeft) {
+if(glaciatior.style.pixelTop == boulderax.style.pixelTop) {
+sulfurix.style.pixelLeft += 9
+}
+}
+if(boulderax.style.pixelLeft == boulderax.style.pixelLeft) {
+if(boulderax.style.pixelTop == boulderax.style.pixelTop) {
+boulderax.style.pixelLeft += 9
+}
+}
+boulderax.src = "boulderaxside.gif"
+
+		if(cc == "true") {
+	cc = "false"
+	getCrystal()
+	}
+
+	  if(fgo == "true") {
+		 
+		alert(pmn[clickedon] + " is fighting " + pmn[defender])
+		iof = "true"
+		stopitnow   = "true"
+		cf = "false"
+
+
+
+	}
+
+if(cw == "true") {
+ grabWeapon()
+
+}
+
+
+counter = 0
+
+}
+
+
+
+else {
+
+if (stopitnow == "false") {
+
+if(iof == "false") {
+
+setTimeout("moveRMU(b,t,d)",15)
+					}
+}
+
+
+}
+}
+}
+
+}
+function getCrystal() {
+if(turn == "pm") {
+if(wc == 1) {
+crystala.style.visibility = "hidden"
+}
+if(wc == 2) {
+crystalb.style.visibility = "hidden"
+}
+if(wc == 3) {
+crystalc.style.visibility = "hidden"
+}
+}
+else if (turn == "rm") {
+if(wc == 1) {
+crystala.style.visibility = "hidden"
+}
+if(wc == 2) {
+crystalb.style.visibility = "hidden"
+}
+if(wc == 3) {
+crystalc.style.visibility = "hidden"
+}
+if(pmwtwo[clickedon] == "") {
+pmwtwo[clickedon] = "Crystal-Zap Power" 
+pmwtwod[clickedon] = 5
+w2.src = "Crystal-Zap Power.gif"
+w2.alt = "Crystal-Zap Power"
+timeslefttousezap[clickedon] = 2
+
+
+}
+else {
+if(wc == 1) {
+crystala.style.visibility = "visible"
+}
+if(wc == 2) {
+crystalb.style.visibility = "visible"
+}
+if(wc == 3) {
+crystalc.style.visibility = "visible"
+}
+
+alert("Sorry, you can't have any more weapons or crystals.")
+dmiv = "true"
+
+
+}
+if (dmiv == "false") {
+if(wc == 1) {
+crystala.style.visibility = "hidden"
+}
+if(wc == 2) {
+crystalb.style.visibility = "hidden"
+}
+if(wc == 3) {
+crystalc.style.visibility = "hidden"
+}
+noc -= 1
+}
+else {
+dmiv = "false"
+}
+
+}
+}
+
+function grabWeapon() {
+ if(turn == "pm") {
+ srcf = tempname + ".gif"
+ 		 getweapon.URL = "getweapon.wav"
+
+	if(numberofweapons == 1){
+		w2.src = srcf
+		pmwtwod[clickedon] = tempdamage
+		pmwtwo[clickedon] = tempname
+		numberofweapons += 1
+		 getweapon.URL = "getweapon.wav"
+		
+		if(tempname == "buzzsaw") {
+			buzzsaw.style.visibility = "hidden"
+		}
+		else {
+	if (tempname = "chainsaw") {
+	chainsaw.style.visibility = "hidden"
+	}
+	}
+	 }
+	 else {
+		if(numberofweapons == 2) {
+			w3.src = srcf
+			pmwthreed[clickedon] = tempdamage
+			pmwthree[clickedon] = tempname
+			numberofweapons += 1
+					 getweapon.URL = "getweapon.wav"
+					 getweapon.URL = "getweapon.wav"
+
+			if(tempname == "buzzsaw") {
+				buzzsaw.style.visibility = "hidden"
+			}
+			else {
+	if (tempname = "chainsaw") {
+	chainsaw.style.visibility = "hidden"
+	}
+	}
+		}
+		  }
+		  cw = "false"
+	}
+	else {
+	if(tempname = "buzzsaw") {
+	buzzsaw.style.visibility = "hidden"
+	}
+	else {
+	if (tempname = "chainsaw") {
+	chainsaw.style.visibility = "hidden"
+	}
+	}
+	}
+	}
+function crystal(c) {
+if(turn == "pm") {
+wc = c
+  if(c == 1) {
+	xPos = crystala.style.pixelLeft
+	yPos = crystala.style.pixelTop
+  }
+  if(c == 2) {
+	xPos = crystalb.style.pixelLeft
+	yPos = crystalb.style.pixelTop
+  }
+  if(c == 3) {
+	xPos = crystalc.style.pixelLeft
+	yPos = crystalc.style.pixelTop
+  }
+  cc = "true"
+  movePowerMiner(xPos,yPos,cc,c)
+ }
+else if(turn == "rm" ) {
+wc = c
+  if(c == 1) {
+	xPos = crystala.style.pixelLeft
+	yPos = crystala.style.pixelTop
+  }
+  if(c == 2) {
+	xPos = crystalb.style.pixelLeft
+	yPos = crystalb.style.pixelTop
+  }
+  if(c == 3) {
+	xPos = crystalc.style.pixelLeft
+	yPos = crystalc.style.pixelTop
+  }
+  cc = "true"
+  moveRockMonster(xPos,yPos,cc,c)
+ }
+
+}
+
+
+function fight(def) {
+if(turn == "pm") {
+
+if(iof == "true") {
+}
+else {
+defender = def
+   attacker = pmn[clickedon]
+   attackernum = clickedon
+}
+stop = "true"
+
+if(pmn[defender] == "GLACIATOR") {
+xPos = glaciatorc.style.pixelLeft
+yPos = glaciatorc.style.pixelTop
+}
+else {
+if(pmn[defender] == "MELTROX") {
+xPos = meltroxc.style.pixelLeft
+yPos = meltroxc.style.pixelTop
+}
+else {
+if(pmn[defender] == "FIROX") {
+xPos = firoxc.style.pixelLeft
+yPos = firoxc.style.pixelTop
+}
+else {
+if(pmn[defender] == "SULFURIX") {
+xPos = sulfurixc.style.pixelLeft
+yPos = sulfurixc.style.pixelTop
+}
+else {
+if(pmn[defender] == "BOULDERAX") {
+xPos = boulderaxc.style.pixelLeft
+yPos = boulderaxc.style.pixelTop
+}
+else {
+alert("You can't fight " + pmn[defender] +"!! You need to click on a Rock Monster's square to fight him.")
+dontmoveatallno = "true"
+}
+}
+}
+}
+}
+if(dontmoveatallno == "true") {
+dontmoveatallno = "false"
+}
+else {
+cf = "true"
+movePowerMiner(xPos,yPos,cf,defender)
+	  }
+
+
+
+
+}
+ else {
+ if(turn == "rm") {
+
+if(iof == "true") {
+}
+else {
+defender = def
+   attacker = pmn[clickedon]
+   attackernum = clickedon
+}
+stop = "true"
+
+if(pmn[defender] == "REX") {
+xPos = rexc.style.pixelLeft
+yPos = rexc.style.pixelTop
+}
+else {
+if(pmn[defender] == "DUKE") {
+xPos = dukec.style.pixelLeft
+yPos = dukec.style.pixelTop
+}
+else {
+if(pmn[defender] == "DOC") {
+xPos = docc.style.pixelLeft
+yPos = docc.style.pixelTop
+}
+else {
+if(pmn[defender] == "BRAINS") {
+xPos = brainsc.style.pixelLeft
+yPos = brainsc.style.pixelTop
+}
+else {
+if(pmn[defender] == "BOB") {
+xPos = minerc.style.pixelLeft
+yPos = minerc.style.pixelTop
+}
+else {
+if(pmn[defender] == "JED") {
+ xPos = jedc.style.pixelLeft
+yPos = jedc.style.pixelTop
+}
+else {
+alert("You can't fight " + pmn[defender] +"!! You need to click on a Power Miner's square to fight him")
+dontmoveatallno = "true"
+	  }
+}
+}
+}
+}
+}
+if(dontmoveatallno == "true") {
+dontmoveatallno = "false"
+}
+else {
+cf = "true"
+moveRockMonster(xPos,yPos,cf,defender)
+	  }
+
+
+
+
+}
+else {
+alert("Fatal Error")
+}
+}
+}
+function changeTurn() {
+if (confirm("Are you sure you want it to be the next player's turn?")) { 
+doCrystals()
+cc = "false"
+cf = "false"
+
+if(turn == "pm") {
+turn = "rm"
+nextturn.value = "Player 1's Turn..."
+
+}
+else {
+if(turn == "rm") {
+turn = "pm"
+nextturn.value = "Player 2's Turn..."
+}
+else {
+alert("Fatal Error.")
+}
+
+
+}
+function doCrystals() {
+if(noc == 3) {
+}
+else {
+
+if(patnum == 53) {
+patnum = 0
+}
+if(pattwonum == 53) {
+pattwonum = 0
+}
+if(crystala.style.visibility == "hidden") {
+
+crystala.style.visibility = "visible"
+crystala.style.pixelLeft = pattern[patnum]*100
+crystala.style.pixelTop = patterntwo[pattwonum]*100
+
+patnum += 1
+pattwonum += 1	  
+}
+if(crystalb.style.visibility == "hidden") {
+
+crystalb.style.visibility = "visible"
+crystalb.style.pixelLeft = pattern[patnum]*100
+crystalb.style.pixelTop = patterntwo[pattwonum]*100
+
+patnum += 1
+pattwonum += 1	  
+}
+if(crystalc.style.visibility == "hidden") {
+
+crystalc.style.visibility = "visible"
+crystalc.style.pixelLeft = pattern[patnum]*100
+crystalc.style.pixelTop = patterntwo[pattwonum]*100
+
+patnum += 1
+pattwonum += 1	  
+}
+}
+
+
+}
+function putOutCrystals()  {
+if(noc == 3) {
+}
+else {
+u = Math.random()
+lp = u / 7
+i = Math.random()
+tp = i / 7
+sec = new Array
+sectwo = new Array
+sec[1] = tp
+sec[2] = 2*tp
+sec[3] = 3*tp
+sec[4] = 4*tp
+sec[5] = 5*tp
+sec[6] = 6*tp
+sec[7] = 7*tp
+sectwo[1] = 1*lp
+sectwo[2] = 2*lp
+sectwo[3] = 3*lp
+sectwo[4] = 4*lp
+sectwo[5] = 5*lp
+sectwo[6] = 6*lp
+sectwo[7] = 7*lp
+alert(u +"," + lp + "," + i + "," + tp +"," )
+if(u >= sec[1]) {
+ if (u   < sec[2]) {
+	leftp = 100
+	}
+}
+if(u >= sec[2]) {
+ if (u   < sec[3]) {
+	leftp = 200
+	}
+}
+if(u >= sec[3]) {
+ if (u   < sec[4]) {
+	leftp = 300
+	}
+}
+if(u >= sec[4]) {
+ if (u   < sec[5]) {
+	leftp = 400
+	}
+}
+if(u >= sec[5]) {
+ if (u   < sec[6]) {
+	leftp = 500
+	}
+}
+if(u >= sec[6]) {
+ if (u   <= sec[7]) {
+	leftp = 600
+	}
+}
+
+topp = 300
+crystalc.style.visibility = "visible"
+crystalc.style.pixelLeft = leftp
+crystalc.style.pixelTop = topp
+
+  }
+
+}
+for (x=0;x<11;x++) {
+alreadymoved[x] = "false"
+}
+alreadymoved[1] = "false"
+fgo = "false"
+pbm = "nobody"
+cf = "false"
+stop = "false"
+stopitnow = "false"
+iof = "false"
+}
+}
+function changeObject(wea, thing) {
+if(turn == "pm") {
+if(whosclickedon = "pm") {
+if(thing == "buzzsaw") {
+xPos = buzzsaw.style.pixelLeft
+yPos = buzzsaw.style.pixelTop
+tempname = thing
+tempnum = wea
+tempdamage = 4
+}
+
+if(thing == "chainsaw") {
+xPos = chainsaw.style.pixelLeft
+yPos = chainsaw.style.pixelTop
+tempname = thing
+tempnum = wea
+tempdamage = 3
+}
+
+
+cw = "true"
+movePowerMiner(xPos,yPos)
+}
+
+}
+else {
+if(whosclickedon = "rm") {
+if(thing == "buzzsaw") {
+xPos = buzzsaw.style.pixelLeft
+yPos = buzzsaw.style.pixelTop
+tempname = thing
+tempnum = wea
+tempdamage = 4
+}
+
+if(thing == "chainsaw") {
+xPos = chainsaw.style.pixelLeft
+yPos = chainsaw.style.pixelTop
+tempname = thing
+tempnum = wea
+tempdamage = 3
+}
+
+
+cw = "true"
+moveRockMonster(xPos,yPos)
+}
+}
+
+}
+function alertt() {
+alert("HEY!!!")
+}
+function changeWeapon(w) {
+if(fgo == "true") {
+
+if(clickedon == attackernum) {
+if(w == 1){
+	alert("You are now using the " + pmw[clickedon])
+	wbu = 1
+}
+else {
+if(w == 2){
+	if(pmwtwo[clickedon] == "") {
+	alert("You don't have a second weapon yet")
+	
+	}
+	else {
+	alert("You are now using the " + pmwtwo[clickedon])
+	wbu = 2
+	}
+}
+else {
+	if(pmwthree[clickedon] == "") {
+	alert("You don't have a third weapon yet")
+	
+	}
+	else {
+	alert("You are now using the " + pmwthree[clickedon])
+	wbu = 3
+	}
+}
+}
+}
+else {
+alert("You need to click on " + attacker + " before you can choose a weapon.")
+}
+}
+else{
+alert("You can only use weapons if you are in a fight.")
+}
+
+}
+function strike() {
+ if(fgo == "true") {
+if(wbu == 1) {
+damagedone = pmwd[attackernum]
+
+}
+else{
+if(wbu == 2) {
+damagedone = pmwtwod[attackernum]
+if(pmwtwo[attackernum] == "Crystal-Zap Power") {
+
+timeslefttousezap[attackernum] -= 1
+
+if(timeslefttousezap[attackernum] == 0	) {
+pmwtwo[attackernum] = ""
+w2.src = ""
+w2.alt = ""
+}
+}
+}
+else  {
+if(wbu==3){
+damagedone = pmwthreed[attackernum]
+if(pmwthree[attackernum] == "Crystal-Zap Power") {
+
+
+timeslefttousezap[attacker] -= 1
+if(timeslefttousezap[attacker] == 0	) {
+pmwthree[attackernum] = ""
+w3.src = ""
+}
+}
+}
+else {
+damagedone = 0
+
+}
+}
+}
+pml[defender] -= damagedone
+alert(pmn[defender] + "'s life has gone down by: " + damagedone + ". So now his life value is: " + pml[defender] )
+stopitnow = "false"
+
+fgo = "false"
+iof = "false"
+cf = "false"
+
+if(pml[defender] <= 0) {
+
+if(turn == "pm") {
+if(pmn[defender] == "GLACIATOR") {
+glaciatior.style.visibility = "hidden"
+glaciatorc.style.visibility = "hidden"
+rml -= 1
+
+}
+if(pmn[defender] == "MELTROX") {
+meltrox.style.visibility = "hidden"
+meltroxc.style.visibility = "hidden"
+rml -= 1
+
+}
+if(pmn[defender] == "FIROX") {
+firox.style.visibility = "hidden"
+firoxc.style.visibility = "hidden"
+rml -= 1
+
+}
+if(pmn[defender] == "SULFURIX") {
+sulfurix.style.visibility = "hidden"
+sulfurixc.style.visibility = "hidden"
+rml -= 1
+
+}
+if(pmn[defender] == "BOULDERAX") {
+boulderax.style.visibility = "hidden"
+boulderaxc.style.visibility = "hidden"
+rml -= 1
+
+}
+}
+else {
+ if (turn == "rm") {
+
+if(pmn[defender] == "REX") {
+rex.style.visibility = "hidden"
+rexc.style.visibility = "hidden"
+pmli -= 1
+
+}
+if(pmn[defender] == "DUKE") {
+duke.style.visibility = "hidden"
+dukec.style.visibility = "hidden"
+pmli -= 1
+
+}
+if(pmn[defender] == "DOC") {
+doc.style.visibility = "hidden"
+docc.style.visibility = "hidden"
+pmli -= 1
+
+}
+if(pmn[defender] == "BRAINS") {
+brains.style.visibility = "hidden"
+brainsc.style.visibility = "hidden"
+pmli -= 1
+
+}
+if(pmn[defender] == "BOB") {
+
+miner.style.visibility = "hidden"
+minerc.style.visibility = "hidden"
+	pmli -= 1
+
+}
+if(pmn[defender] == "JED") {
+
+jed.style.visibility = "hidden"
+jedc.style.visibility = "hidden"
+	pmli -= 1
+
+}
+
+ }
+}
+alert(pmn[defender] + " is DEAD!!!!" )
+fgo = "false"
+iof = "false"
+cf = "false"
+ if(rml <= 0) {
+ alert("The Power Miners have won!! Congratulations Power Miners!! Sorry you lost Rock Monsters!!")
+ }
+ if(pmli <= 0) {
+ alert("The Rock Monsters have won!! Congratulations Rock Monsters!! Sorry you lost Power Miners!!")
+ }
+}
+fgo = "false" 
+iof = "false"
+stopitnow = "false"
+attackernum = -1
+
+}
+else {
+alert("You  can only strike if you are in a battle")
+fgo = "false"
+iof= "false"
+cf = "false"
+}
+fgo = "false"
+cf = "false"
+iof = "false"
+}
+ function openHelp() {
+   newWindow = open("help.htm","Help")
+   }
+</script>
+<P>
+<STYLE type=text/css>
+<!--
+#rex{position: absolute; left: 15; top:20; visibility: visible}
+#duke {position: absolute; left: 15; top:60; visibility: visible}
+#doc {position: absolute; left: 15; top:100; visibility: visible}
+#brains {position: absolute; left: 15; top:140; visibility: visible}
+#miner {position: absolute; left: 15; top:180; visibility: visible}
+#jed{position: absolute; left: 15; top:220; visibility: visible}
+#crystala{position: absolute; left: 15; top:220; visibility: visible}
+#crystalb{position: absolute; left: 15; top:220; visibility: visible}
+#crystalc{position: absolute; left: 15; top:220; visibility: visible}
+
+#glaciatior {position: absolute; left: 700; top:20; visibility: visible}
+#meltrox {position: absolute; left: 700; top:60; visibility: visible}
+#firox {position: absolute; left: 700; top:100; visibility: visible}
+#sulfurix {position: absolute; left: 700; top:140; visibility: visible}
+#boulderax {position: absolute; left: 700; top:180; visibility: visible}
+#stone {position: absolute; left: 200; top:15; visibility: visible}
+#test {position: absolute}
+#glaciatorc{position: absolute; visibility: hidden}
+#meltroxc{position: absolute; visibility: hidden}
+#firoxc{position: absolute; visibility: hidden}
+#sulfurixc{position: absolute; visibility: hidden}
+#boulderaxc{position: absolute; visibility: hidden}
+#rexc{position: absolute; visibility: hidden}
+#jedc{position: absolute; visibility: hidden}
+
+#dukec{position: absolute; visibility: hidden}
+#docc{position: absolute; visibility: hidden}
+#brainsc{position: absolute; visibility: hidden}
+#minerc{position: absolute; visibility: hidden}
+#buzzsaw {position: absolute; visibility: visible)
+#chainsaw {position: absolute; visibility: visible)
+
+
+
+		  
+-->
+</STYLE>
+<IMG onmousedown=moveHandler() style="WIDTH: 817px; HEIGHT: 480px; BACKGROUND-COLOR: sandybrown" height=641 src= "backgroundpowerminer.gif" width=842 name=field>&nbsp; <INPUT id=button1 type=button onclick="javascript: alert('Game is paused. Press ok to resume.')" value=Pause name=button1> 
+<INPUT id=button2 type=button value=Help name=button2 onclick=openHelp()> 
+<P></P>
+<hr>
+
+<P></P>
+<P><IMG id=profile style="WIDTH: 88px; HEIGHT: 81px" 
+height=30 src="" width=76 name=" profile">&nbsp;&nbsp;&nbsp;Lives: <INPUT name="lives" style="WIDTH: 27px; HEIGHT: 22px" 
+readOnly size=2>&nbsp;Mind: <INPUT 
+style="LEFT: 175px; WIDTH: 26px; TOP: 624px; HEIGHT: 22px" name="mind" readOnly size 
+=1>&nbsp;Agility: <INPUT style="WIDTH: 27px; HEIGHT: 22px" name="agil" readOnly 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG onclick="changeWeapon(1)" id=w1 style="WIDTH: 91px; HEIGHT: 80px" height=30 
+src="" width=84 name=w1><IMG id=w2 onclick="changeWeapon(2)" style   ="WIDTH: 
+84px; HEIGHT: 80px" height=30 src="" width=84 name=w2><IMG id=w3 onclick="changeWeapon(3)" style="WIDTH: 84px; HEIGHT: 79px" height=30 
+src="" width=84 name=w3></P>
+<P>&nbsp;<INPUT style="WIDTH: 94px; HEIGHT: 22px" readOnly size=12 name=proname>
+&nbsp; <INPUT type=button value="Player 2's Turn..." id=button1 name="nextturn" onclick=changeTurn(2)>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT id=button1 type=button value=Strike! onclick="strike()" name=strike style="LEFT: 263px; TOP: 658px"> </P>
+
+<IMG id=rex onmouseover="javascript: document.all.rexc.style.visibility = 'visible'" style  ="WIDTH: 21px; TOP:  21px; HEIGHT: 40px" onclick=changeProfile(0) tabIndex=0 height=33 alt    =Rex src="PowerMinerSideView.gif" width=27 name=rex >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<IMG id=duke onmouseover="javascript: document.all.dukec.style.visibility = 'visible'" style  ="WIDTH: 21px; HEIGHT:  40px" onclick=changeProfile(1) tabIndex=1 height=33 alt=Duke src="PowerMinerSideView.gif" width  =27 name=duke > 
+<P></P>
+<IMG id=doc onmouseover="javascript: document.all.docc.style.visibility = 'visible'" style  ="WIDTH:  21px; HEIGHT:  40px" onclick=changeProfile(2) tabIndex=2 height=33 alt=Doc src  ="PowerMinerSideView.gif" width  =27 name=doc > 
+<P></P>
+<IMG id=brains onmouseover="javascript: document.all.brainsc.style.visibility = 'visible'" style  ="WIDTH: 21px; HEIGHT:  40px" onclick=changeProfile(3) tabIndex=3 height=33 alt=Brains src="PowerMinerSideView.gif" width  =27 name=brains > 
+<P>&nbsp;</P>
+<IMG id=miner onmouseover="javascript: document.all.minerc.style.visibility   = 'visible'" style="WIDTH: 21px;  HEIGHT: 40px" onclick=changeProfile(9) tabIndex=9 height=33 alt  =Bob src="PowerMinerSideView.gif" width=27 name=miner > 
+<IMG id=jed onmouseover="javascript: document.all.jedc.style.visibility   = 'visible'" style="WIDTH: 21px;  HEIGHT: 40px" onclick=changeProfile(10) tabIndex=10 height=33 alt  =Jed src="PowerMinerSideView.gif" width=27 name=jed > 
+
+<IMG id=glaciatior onmouseover="javascript: document.all.glaciatorc.style.visibility = 'visible'"  style    ="WIDTH: 28px; TOP: 21px; HEIGHT: 40px" onclick    =changeProfile(4) tabIndex=4 height=33 alt=Glaciator src="glaciatiorside.gif" width=27 name=glaciatior >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<IMG id=meltrox onmouseover="javascript: document.all.meltroxc.style.visibility = 'visible'"  style   ="WIDTH: 21px; HEIGHT: 40px" onclick=changeProfile(5) tabIndex=5 height  =33 alt=Meltrox src="meltroxside.gif" width=27 name=meltrox > 
+<P>&nbsp;</P>
+<IMG id=firox onmouseover="javascript: document.all.firoxc.style.visibility = 'visible'" style="WIDTH: 29px;  HEIGHT: 41px"  onclick =changeProfile(6) tabIndex=6 height=33 alt=Firox src="firoxside.gif" width  =27 name=firox > 
+<P>&nbsp;</P>
+<IMG id=sulfurix onmouseover="javascript: document.all.sulfurixc.style.visibility = 'visible'" style="WIDTH: 27px;  HEIGHT: 40px"  onclick =changeProfile(7) tabIndex=7 height=33 alt=Sulfurix src="sulfurixside.gif" width  =27 name=sulfurix > 
+<P>&nbsp;</P>
+<IMG id=boulderax onmouseover="javascript:  document.all.boulderaxc.style.visibility = 'visible'" style="WIDTH: 27px;  HEIGHT: 40px"  onclick =changeProfile(8) tabIndex=8 height=33 alt=Boulderax src="boulderaxside.gif" width  =27 name=boulderax > 
+<P>&nbsp;</P>
+
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<img src="" name="glaciatorc" id="glaciatorc" onclick="fight(4)" height=16 width=14>&nbsp; 
+<img src="" name="meltroxc" id="meltroxc" onclick="fight(5)" height=16 width=14>&nbsp; 
+<img src="" name="firoxc" id="firoxc" onclick="fight(6)" height=16 width=14>&nbsp; 
+<img src="" name="sulfurixc" id="sulfurixc" onclick="fight(7)" height=16 width=14>&nbsp; 
+<img src="" name="boulderaxc" id="boulderaxc" onclick="fight(8)" height=16 width=14 style="LEFT: 19px; TOP: 1006px">&nbsp;
+<img src="" name="rexc" id="rexc" onclick="fight(0)" height=16 width=14>&nbsp; 
+<img src="" name="jedc" id="jedc" onclick="fight(10)" height=16 width=14>&nbsp; 
+<IMG id=crystala onclick = crystal(1) height=35 src="crystalboulderax.gif" width=37 name=crystala >
+<IMG id=crystalb onclick = crystal(2) height=35 src="crystalfirox.gif" width=37 name=crystalb >
+<IMG id=crystalc onclick = crystal(3) height=35 src="crystalmeltrox.gif" width=37 name=crystalc >
+
+
+<img src="" name="dukec" id="dukec" onclick="fight(1)" height=16 width=14>&nbsp; 
+<img src="" name="docc" id="docc" onclick="fight(2)" height=16 width=14>&nbsp; 
+<img src="" name="brainsc" id="brainsc" onclick="fight(3)" height=16 width=14>&nbsp; 
+<img src="" name="minerc" id="minerc" onclick="fight(9)" height=16 width=14 style="LEFT: 19px; TOP: 1006px">&nbsp;&nbsp;
+<OBJECT id=getweapon style="WIDTH: 7px; HEIGHT: 8px" 
+classid=clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6 name=getweapon VIEWASTEXT><PARAM NAME="URL" VALUE=""><PARAM NAME="rate" VALUE="1"><PARAM NAME="balance" VALUE="0"><PARAM NAME="currentPosition" VALUE="0"><PARAM NAME="defaultFrame" VALUE=""><PARAM NAME="playCount" VALUE="1"><PARAM NAME="autoStart" VALUE="-1"><PARAM NAME="currentMarker" VALUE="0"><PARAM NAME="invokeURLs" VALUE="-1"><PARAM NAME="baseURL" VALUE=""><PARAM NAME="volume" VALUE="50"><PARAM NAME="mute" VALUE="0"><PARAM NAME="uiMode" VALUE="mini"><PARAM NAME="stretchToFit" VALUE="0"><PARAM NAME="windowlessVideo" VALUE="0"><PARAM NAME="enabled" VALUE="-1"><PARAM NAME="enableContextMenu" VALUE="-1"><PARAM NAME="fullScreen" VALUE="0"><PARAM NAME="SAMIStyle" VALUE=""><PARAM NAME="SAMILang" VALUE=""><PARAM NAME="SAMIFilename" VALUE=""><PARAM NAME="captioningID" VALUE=""><PARAM NAME="enableErrorDialogs" VALUE="0"><PARAM NAME="_cx" VALUE="185"><PARAM NAME="_cy" VALUE="212"></OBJECT>&nbsp; 
+
+
+
+
+
+</BODY>
+</HTML>
